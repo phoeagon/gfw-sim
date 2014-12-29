@@ -1,0 +1,18 @@
+#!/bin/sh /etc/rc.common
+
+START=95
+
+SERVICE_USE_PID=1
+SERVICE_WRITE_PID=1
+SERVICE_DAEMONIZE=1
+
+start() {
+    /usr/bin/dns.sh
+    /usr/bin/ipblock.sh
+    /usr/bin/keywords.sh
+    /usr/bin/preventbypass.sh
+}
+
+stop() {
+    /etc/init.d/firewall restart
+}
