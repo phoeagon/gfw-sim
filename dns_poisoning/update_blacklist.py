@@ -144,7 +144,6 @@ def main():
     gfwlist = combine_lists(content, user_rule)
     domains = parse_gfwlist(gfwlist)
     domains = reduce_domains(domains)
-    print domains
     pac_content = generate_pac_fast(domains)
     with open(args.output, 'wb') as f:
         f.write(pac_content)
