@@ -11,7 +11,8 @@ dns_poison: environment
 	cd dns_poisoning ; bash generate.sh >$(dir)/tmp/blacklist.txt
 
 collect: dns_poison
-	cp -r $(dir)/misc $(dir)/dist
+	cp -r $(dir)/misc/* $(dir)/dist
+	-mkdir -p $(dir)/tmp/blacklist.txt $(dir)/dist/etc/dnsmasq.d/
 	cp $(dir)/tmp/blacklist.txt $(dir)/dist/etc/dnsmasq.d/domains.conf
 
 clean:
