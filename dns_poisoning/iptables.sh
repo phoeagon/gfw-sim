@@ -1,4 +1,4 @@
-#!/bin/bashi
+#!/bin/sh
 iptables -t nat -N DNSPOISONING
 
 # Skip local

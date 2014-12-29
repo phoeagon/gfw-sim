@@ -52,14 +52,16 @@ def generate_ip_list_from_url(url):
 
 def generate_iptables_from_subnets(subnets, actions=None):
     if not actions:
-        actions = ['-j REJECT --reject-with tcp-reset', '-j DROP']
+        actions = ['-p tcp -j REJECT --reject-with tcp-reset', '-j DROP']
     subnets = list({subnet.strip() for subnet in subnets if subnet})
-    cont = ['iptables -t nat -N IPBLOCK']
+    cont = ['#!/bin/sh', 'iptables -N IPBLOCK']
     for subnet in subnets:
-        rule = ('iptables -t nat -A IPBLOCK -d ' + subnet + ' '
+        rule = ('iptables -A IPBLOCK -d ' + subnet + ' '
                 + random.choice(actions))
         cont.append(rule)
-    cont.append('iptables -t nat -j IPBLOCK')
+    cont.extend(['iptables -I INPUT -j IPBLOCK',
+                'iptables -I OUTPUT -j IPBLOCK',
+                'iptables -I FORWARD -j IPBLOCK'])
     return '\n'.join(cont)
 
 def generate_iptables():

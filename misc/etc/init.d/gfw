@@ -11,6 +11,7 @@ start() {
     /usr/bin/ipblock.sh
     /usr/bin/keywords.sh
     /usr/bin/preventbypass.sh
+    iptables -I INPUT -d 192.168.1.1 -j ACCEPT
 }
 
 stop() {

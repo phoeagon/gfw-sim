@@ -18,11 +18,13 @@ def _get_domain_keywords(filename='resource/domains.txt'):
 def get_keywords():
     return _get_domain_keywords() + _get_keywords_from_google()
 
-def generate_iptables(keywords, action='-j REJECT --reject-with tcp-reset'):
-    cont = ['#!/bin/bash', 'iptables -t nat -N KEYWORDS']
-    cont += [('iptables -t nat -A KEYWORDS -m string --algo bm --string "'
+def generate_iptables(keywords, action='-p tcp -j REJECT --reject-with tcp-reset'):
+    cont = ['#!/bin/sh', 'iptables -N KEYWORDS']
+    cont += [('iptables -A KEYWORDS -m string --algo bm --string "'
                 + kw.strip() +  '" ' + action) for kw in keywords]
-    cont.append('iptables -t nat -j KEYWORDS')
+    cont.extend(['iptables -I INPUT -j KEYWORDS',
+                'iptables -I OUTPUT -j KEYWORDS',
+                'iptables -I FORWARD -j KEYWORDS'])
     return '\n'.join(cont)
 
 def main():

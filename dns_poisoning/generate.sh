@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 DEAD="59.24.3.173"
 BLACKLIST=`cat blacklist.txt`
 
@@ -8,5 +8,5 @@ for domain in $BLACKLIST
     echo "address=/"${domain}"/"${DEAD}
   done
 
-echo "# Otherwise, go to google public DNS."
-echo "server=/#/8.8.8.8#53"
+echo "# Otherwise, go to baidu public DNS."
+echo "server=/#/180.76.76.76#53"
