@@ -33,10 +33,10 @@ It's only tested on an Ubuntu trusty.
 
 1. Install python (version 2), and relevant libraries (`joblib`, `requests`).
 
-	# Assuming python2 is already installed (as by default).
-	sudo apt-get install pip
-	sudo pip install joblib
-	sudo pip install requests
+		# Assuming python2 is already installed (as by default).
+		sudo apt-get install pip
+		sudo pip install joblib
+		sudo pip install requests
 
 2. Do a `make` at the root of the source file. You need an uncensored network
 connection for this.
@@ -45,12 +45,12 @@ connection for this.
 
 4. Transfer the files to OpenWRT:
 
-	scp -r dist/* root@[ip_of_router]:/
+		scp -r dist/* root@[ip_of_router]:/
 
 5. At the router, you should install `iptables-mod-filter`.
 
-	opkg update
-	opkg install iptables-mod-filter
+		opkg update
+		opkg install iptables-mod-filter
 
 
 ### Installing with prebuilt rule files
