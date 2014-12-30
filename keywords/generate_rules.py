@@ -22,8 +22,8 @@ def generate_iptables(keywords, action='-p tcp -j REJECT --reject-with tcp-reset
     cont = ['#!/bin/sh', 'iptables -N KEYWORDS']
     cont += [('iptables -A KEYWORDS -m string --algo bm --string "'
                 + kw.strip() +  '" ' + action) for kw in keywords]
-    cont.extend(['iptables -I INPUT -j KEYWORDS',
-                'iptables -I OUTPUT -j KEYWORDS',
+    cont.extend([#'iptables -I INPUT -j KEYWORDS',
+                #'iptables -I OUTPUT -j KEYWORDS',
                 'iptables -I FORWARD -j KEYWORDS'])
     return '\n'.join(cont)
 

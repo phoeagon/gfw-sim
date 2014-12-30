@@ -59,8 +59,8 @@ def generate_iptables_from_subnets(subnets, actions=None):
         rule = ('iptables -A IPBLOCK -d ' + subnet + ' '
                 + random.choice(actions))
         cont.append(rule)
-    cont.extend(['iptables -I INPUT -j IPBLOCK',
-                'iptables -I OUTPUT -j IPBLOCK',
+    cont.extend([#'iptables -I INPUT -j IPBLOCK',
+                #'iptables -I OUTPUT -j IPBLOCK',
                 'iptables -I FORWARD -j IPBLOCK'])
     return '\n'.join(cont)
 
