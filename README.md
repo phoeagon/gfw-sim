@@ -2,6 +2,8 @@ GFW Simulator
 =======================
 phoeagon
 
+A [GFW](http://en.wikipedia.org/wiki/Golden_Shield_Project)
+simulator to work on routers, based on [OpenWRT](http://openwrt.org).
 This is a mock implementation of GFW on OpenWRT routers.
 
 ## Goal
