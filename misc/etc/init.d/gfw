@@ -1,16 +1,16 @@
 #!/bin/sh /etc/rc.common
 
-START=95
+START=96
 
 SERVICE_USE_PID=1
 SERVICE_WRITE_PID=1
 SERVICE_DAEMONIZE=1
 
 start() {
-    /usr/bin/dns.sh
-    /usr/bin/ipblock.sh
-    /usr/bin/keywords.sh
-    /usr/bin/preventbypass.sh
+    ( sh /usr/bin/dns.sh ) 2>&1 >>/tmp/gfw.log
+    ( /usr/bin/ipblock.sh ) 2>&1 >>/tmp/gfw.log
+    ( /usr/bin/keywords.sh ) 2>&1 >>/tmp/gfw.log
+    ( /usr/bin/preventbypass.sh ) 2>&1 >>/tmp/gfw.log
     iptables -I INPUT -d 192.168.1.1 -j ACCEPT
 }
 
