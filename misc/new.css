@@ -10,3 +10,9 @@
 .invisible {
     invisibility: hidden;
 }
+.btn-fab {
+    z-index: 1;
+    position: relative;
+    left: 50%;
+    top: -50%;
+}
