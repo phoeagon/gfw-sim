@@ -35,8 +35,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-offset-1 col-xs-6">
-	<h1>
-	  G-Protected Smart Router</h1>
+	<img src="img/gpsr.png" alt="G-Protected Smart Router"/>
       </div>
     </div>
   </div>
@@ -263,7 +262,7 @@
     </a>
 <div style="height:200px">
 </div>
-<div class="footer navbar-fixed-bottom center" style="background-color: #ffffff;">
+<div class="footer navbar-fixed-bottom center background-blue">
 <div class="row">
 <div class="col-xs-offset-4 col-xs-2">
   <img src="img/aeri5ign.png" height="40px" alt="aeri5ign" />
@@ -272,25 +271,24 @@
   <img src="img/visamc.jpg" height="40px" alt="visamc" />
 </div>
 </div>
-<div style="height:20px;">
+<div class="row">
+  <div class="col-xs-3 col-xs-offset-2">
+    <p class="foot-menu nav">
+       <a href="#aboutus">About</a>
+       <span class="pipe">|</span>
+       <a href="mailto:admin@gjiarouter.info">Contact Us</a>
+       <span class="pipe">|</span>
+       <a href="#" data-toggle="modal" data-target="#recruit-dialog">Jobs here!</a>
+    </p>
+  </div>
+  <div class="col-xs-4 col-xs-offset-1">
+      <p class="text-muted">
+Copyright 2015. phoeagon. All rights reserved, if possible.</p>
 </div>
-   <p class="foot-menu nav">
-       <a href="#aboutus">
-About</a>
-       <span class="pipe">
-|</span>
-       <a href="mailto:admin@gjiarouter.info">
-Contact Us</a>
-       <span class="pipe">
-|</span>
-       <a href="#" data-toggle="modal" data-target="#recruit-dialog">
-Jobs here!</a>
-  </p>
-  <p class="text-muted">
-Copyright 2015. phoeagon.</p>
-  <p class="text-muted">
-This is purely satirical.</p>
+  </div>
 </div>
+ 
+
 <div id="subscribe-dialog" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
 <div class="modal-content">
@@ -477,17 +475,17 @@ This is purely satirical.</p>
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('.nav').localScroll({duration:200});
+    //$('.nav').localScroll({duration:200});
+    var slider = $("div#mySliderTabs").sliderTabs({
+    autoplay: "10000",
+    mousewheel: false,
+    position: "bottom",
+    height: "450px",
+    tabs: false,
+    indicators: true,
+    panelArrows: true,
+    panelArrowsShowOnHover: true,
     });
-var slider = $("div#mySliderTabs").sliderTabs({
-autoplay: "10000",
-mousewheel: false,
-position: "bottom",
-height: "450px",
-tabs: false,
-indicators: true,
-panelArrows: true,
-panelArrowsShowOnHover: true,
 });
 </script>
 <!-- DC Pricing Tables JS -->
