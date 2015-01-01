@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.material-design/0.2.1/css/ripples.min.css">
 <!-- DC Pricing Tables CSS -->
 <link type="text/css" rel="stylesheet" href="misc/tsc_pricingtables.css" />
+<link rel="stylesheet" href="misc/jquery.sliderTabs.min.css">
 
     <style>
         #subscribe_letter::after {
@@ -57,9 +58,17 @@
     </ul>
   </div>
 </div>
-<div id="content">
-    <a name="screen1">
-    <div id="cont1" style="height:450px;" class="row shadow-z-2">
+<div id="mySliderTabs">
+  <!-- Unordered list representing the tabs -->
+  <ul style="display:none;">
+    <li><a href="#spooky"></a>Spooky Internet</li>
+    <li><a href="#immersive">Immersive</a></li>
+    <li><a href="#simple"></a>Simple</a></li>
+    <li><a href="#uptodate"></a>Up-to-date</a></li>
+  </ul>
+
+  <div id="spooky">
+      <div id="cont1" style="height:450px;" class="row shadow-z-2">
         <div
         class="col-xs-6"
         style="background-image:url(img/spooky.png);height:400px;background-repeat: no-repeat;
@@ -75,12 +84,8 @@
         <p style="font-size:20px;">Subscribe today, before Internet GETS YOU TOMORROW.</p>
         </div>
     </div>
-    </a>
-    <div style="height:50px">
-        <a href="#screen1"><button class="btn btn-fab btn-raised btn-material-red"><i class="mdi-navigation-arrow-back"></i></button></a>
-        <a href="#screen2"<button class="btn btn-fab btn-raised btn-material-lime"><i class="mdi-navigation-arrow-forward"></i></button></a>
-    </div>
-    <a name="screen2">
+  </div>
+  <div id="immersive">
     <div id="cont1" style="height:450px;" class="row shadow-z-2">
         <div
         class="col-xs-5 textright">
@@ -98,12 +103,8 @@
         </div>
         
     </div>
-    </a>
-    <div style="height:50px">
-        <a href="#screen2"><button class="btn btn-fab btn-raised btn-material-red"><i class="mdi-navigation-arrow-back"></i></button></a>
-        <a href="#screen3"<button class="btn btn-fab btn-raised btn-material-lime"><i class="mdi-navigation-arrow-forward"></i></button></a>
-    </div>
-    <a name="screen3">
+  </div>
+  <div id="simple">
     <div id="cont1" style="height:450px;" class="row shadow-z-2">
         <div
         class="col-xs-6"
@@ -117,6 +118,33 @@
         <p style="font-size:30px;">No more fiddling with fireware on each device.</p>
         </div>
     </div>
+  </div>
+</div>
+<div id="content">
+    <a name="screen0">
+        <div class="row" style="background-image:url(img/DIR505.jpg);height:500px;background-repeat: no-repeat;
+    background-position: center; ">
+        </div>
+    </a>
+    <div style="height:50px">
+        <a href="#screen0"><button class="btn btn-fab btn-raised btn-material-red"><i class="mdi-navigation-arrow-back"></i></button></a>
+        <a href="#screen1"<button class="btn btn-fab btn-raised btn-material-lime"><i class="mdi-navigation-arrow-forward"></i></button></a>
+    </div>
+    <a name="screen1">
+    </a>
+    <div style="height:50px">
+        <a href="#screen1"><button class="btn btn-fab btn-raised btn-material-red"><i class="mdi-navigation-arrow-back"></i></button></a>
+        <a href="#screen2"<button class="btn btn-fab btn-raised btn-material-lime"><i class="mdi-navigation-arrow-forward"></i></button></a>
+    </div>
+    <a name="screen2">
+    
+    </a>
+    <div style="height:50px">
+        <a href="#screen2"><button class="btn btn-fab btn-raised btn-material-red"><i class="mdi-navigation-arrow-back"></i></button></a>
+        <a href="#screen3"<button class="btn btn-fab btn-raised btn-material-lime"><i class="mdi-navigation-arrow-forward"></i></button></a>
+    </div>
+    <a name="screen3">
+    
     </a>
     <div style="height:50px">
         <a href="#screen3"><button class="btn btn-fab btn-raised btn-material-red"><i class="mdi-navigation-arrow-back"></i></button></a>
@@ -318,6 +346,7 @@
        <a href="#" data-toggle="modal" data-target="#recruit-dialog">Jobs here!</a>
   </p>
   <p class="text-muted">Copyright 2015. phoeagon.</p>
+  <p class="text-muted">This is purely satirical.</p>
 </div>
 
 <div id="subscribe-dialog" class="modal fade" tabindex="-1">
@@ -360,16 +389,20 @@
 <script src="//cdn.jsdelivr.net/bootstrap.material-design/0.2.1/js/ripples.min.js"></script>
 <script src="misc/jquery.localScroll.min.js"></script>
 <script src="misc/jquery.scrollTo.min.js"></script>
+<script src="misc/jquery.sliderTabs.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
    $('.nav').localScroll({duration:200});
 });
+var slider = $("div#mySliderTabs").sliderTabs({
+  autoplay: "10000",
+  mousewheel: false,
+  position: "bottom",
+  height: "450px",
+});
 </script>
 <!-- DC Pricing Tables JS -->
-<script type="text/javascript">
-</script>
 <script type="text/javascript" src="misc/tsc_pricingtables.js"></script>
-
 
   </body>
 </html>
