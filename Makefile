@@ -35,5 +35,13 @@ preventbypass: environment
 clean:
 	-rm -r $(dir)/dist $(dir)/tmp
 
+update: collect
+	tar zcvf update.tgz -C dist `ls dist`
+	-mkdir releases
+	mv update.tgz releases/
+	md5sum releases/update.tgz | awk '{print $1;}' > ./tmp/md5sum
+	cat releases/digest | tail --lines=+2 >> ./tmp/md5sum
+	mv ./tmp/md5sum releases/digest
+
 all: collect
 
