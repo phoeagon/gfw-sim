@@ -1,0 +1,108 @@
+<h1>Installing GFW-Simulator on DLink DIR-505 -- From Scratch</h1>
+
+<p>phoeagon</p>
+
+<h2>Introduction</h2>
+
+<p>This tutorial describes how to install GFW-Simulator from a stock DLink
+DIR-505 router, with no custom firmware or whatsoever.</p>
+
+<p>Roughly saying there are these two steps:</p>
+
+<ul>
+<li>Install OpenWRT</li>
+<li>Install GFW-Sim</li>
+</ul>
+
+<h2>Instructions: Installing OpenWRT</h2>
+
+<h3>(Chinese version only) Flashing a stock international firmware</h3>
+
+<p>If you purchased a DIR-505 from within China, chances are that the
+router is restricted to regional firmware (Chinese only). To confirm
+if your router is the Chinese version, compare the electric plug.</p>
+
+<p><img src="http://img12.360buyimg.com/n1/g5/M01/02/1F/rBEDik_W78MIAAAAAADob3AORnEAAAlTAPJNQEAAOiH055.jpg" alt="Chinese Version" title="Chinese Version" /></p>
+
+<p><img src="http://1.bp.blogspot.com/-PWQWwqq99HQ/UNCS4CoTE5I/AAAAAAAABjY/MPdpG2W9StU/s1600/DIR-505_A1_Image+H(Back_UK" alt="International" title="" />.jpg "International")</p>
+
+<p><img src="http://www.scarcom.com.br/ecommerce_site/arquivos4336/arquivos/1362687118_2.jpg" alt="International" title="International" /></p>
+
+<p>If you are already on an International version, skip this part.</p>
+
+<ol>
+<li><p>Download the file from <code>ftp://files.dlink.com.au/products/DIR-505/REV_A/Firmware/v1.09b02/DIR-505A1_FW109B02.bin</code>.</p></li>
+<li><p>Instrument the firmware file using WinHex or Bless/GHex2.</p></li>
+</ol>
+
+<p><img src="http://softwaredownload.gitbooks.io/openwrt-fanqiang/content/ebook/dir505/images/2.dir505a1-hex-def.png" alt="Before" title="" /></p>
+
+<p>At offset <code>0x3e</code>, change <code>DEF</code> to <code>CN\0</code>.</p>
+
+<p><img src="http://softwaredownload.gitbooks.io/openwrt-fanqiang/content/ebook/dir505/images/2.dir505a1-hex-cn.png" alt="After" title="" /></p>
+
+<p>Alternatively, you can also just download an instrumented version from <a href="https://software-download.name/download/opensource/DIR505A1_FW109B02.bin">here</a>.</p>
+
+<ol>
+<li><p>Connect your PC to the router.</p></li>
+<li><p>You can use a cable to connect it to your PC.</p></li>
+<li><p>Or you can also connect it with the WiFi AP and password (The default
+password should be printed on the router). Wireless connectivity is not
+recommended for flashing firmware but it almost always works.</p></li>
+<li><p>Navigate to <code>http://192.168.0.1</code> (default IP). Login. Click on <code>Maintenance</code>
+then <code>Firmware</code>.</p></li>
+</ol>
+
+<p><img src="http://softwaredownload.gitbooks.io/openwrt-fanqiang/content/ebook/dir505/images/2.upload-image-cn.png" alt="" title="" /></p>
+
+<ol>
+<li>Upload the instrumented firmware.</li>
+</ol>
+
+<h3>Flashing OpenWRT.</h3>
+
+<p>Download from <code>http://downloads.openwrt.org/snapshots/trunk/ar71xx/openwrt-ar71xx-generic-dir-505-a1-squashfs-factory.bin</code> the latest OpenWRT firmware.</p>
+
+<p>Again, log in via <code>http://192.168.0.1</code> or whatever IP you use.
+<code>Maintenance</code> then <code>Firmware</code>. Upload the firmware above.</p>
+
+<h3>Installing GFW.</h3>
+
+<p>Connect your PC to the router.</p>
+
+<p>You may need to setup SSH service if it's the first time you boot from
+OpenWRT. Do a</p>
+
+<pre><code>  telnet 192.168.1.1
+  &gt;passwd
+</code></pre>
+
+<p>Or whatever IP you happen to use. Configure the password as prompted.</p>
+
+<p>Now you can SSH to the router via <code>ssh root@192.168.1.1</code>.</p>
+
+<pre><code>  scp gfw.ipk root@192.168.1.1:/tmp
+  ssh root@192.168.1.1
+  opkg update
+  opkg install /tmp/gfw.ipk
+</code></pre>
+
+<h3>(Alternative, easier) Use prebuilt binary image</h3>
+
+<p>After you do a <code>passwd</code> on the router, do the following instead</p>
+
+<pre><code>  # On your PC.
+  cd ~
+  wget https://github.com/phoeagon/gfw-sim/releases/download/alpha-v0.0/conf_uploaded.bin -O 1.bin
+  scp 1.bin root@192.168.1.1:/tmp/backup.bin
+  ssh root@192.168.1.1
+  &gt; # on router via ssh
+  &gt; sysupgrade -n -v /tmp/backup.bin
+  &gt; # now wait till the router reboots.
+</code></pre>
+
+<p>The prebuilt images has the following passwords:</p>
+
+<pre><code>System: root gfw-protected
+Wifi (WPA2): GFWed gfw-protected
+</code></pre>

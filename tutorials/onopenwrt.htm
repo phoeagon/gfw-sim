@@ -1,0 +1,39 @@
+<h1>Installing GFW-Simulator on any OpenWRT router</h1>
+
+<p>phoeagon</p>
+
+<h2>Easy method: Assuming on latest firmware</h2>
+
+<p>SSH to the router and install it with the ipk package.</p>
+
+<pre><code>  scp gfw.ipk root@192.168.1.1:/tmp
+  ssh root@192.168.1.1
+  opkg update
+  opkg install /tmp/gfw.ipk
+</code></pre>
+
+<p>If you encounter any problem installing from opkg involving dependencies,
+use the instruction described in <em>Upgrade then install from <code>opkg</code></em>.</p>
+
+<h2>Using our upgrade bin</h2>
+
+<p>This method would override your settings by issuing a <code>sysupgrade</code>.</p>
+
+<pre><code>  # On your PC.
+  cd ~
+  wget https://github.com/phoeagon/gfw-sim/releases/download/alpha-v0.0/conf_uploaded.bin -O 1.bin
+  scp 1.bin root@192.168.1.1:/tmp/backup.bin
+  ssh root@192.168.1.1
+  &gt; # on router via ssh
+  &gt; sysupgrade -n -v /tmp/backup.bin
+  &gt; # now wait till the router reboots.
+</code></pre>
+
+<p>You can try using <code>sysupgrade -v /tmp/backgup.bin</code> instead to try
+to preserve your configurations. But this is not recommended.</p>
+
+<h2>Upgrade then install from <code>opkg</code></h2>
+
+<p>Upgrade your system as described <a href="http://wiki.openwrt.org/doc/howto/generic.sysupgrade">here</a>.</p>
+
+<p>Then do as described in <em>Easy method: Assuming on latest firmware</em>.</p>
