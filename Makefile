@@ -43,5 +43,11 @@ update: collect
 	cat releases/digest | tail --lines=+2 >> ./tmp/md5sum
 	mv ./tmp/md5sum releases/digest
 
+ipk:
+	cp -r ipk tmp/
+	cp -r dist/* tmp/ipk/
+	tmp/ipk/make_ipk.sh $(dir)/releases/gfw.ipk ./tmp/ipk
+
 all: collect
+	make ipk
 

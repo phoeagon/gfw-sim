@@ -1,0 +1,9 @@
+Package: gfw
+Priority: optional
+Section: net
+Depends: iptables-mod-filter dnsmasq
+Description: A mock implementation of GFW.
+Maintainer: phoeagon <admin@gfwrouter.info>
+Source: N/A
+Version: 0.1
+Architecture: mipsel
