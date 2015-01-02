@@ -16,3 +16,33 @@
     left: 50%;
     top: -50%;
 }
+h1 {
+    font-size: 400%;
+}
+h4 {
+    font-size: 80%;
+}
+h6 {
+    font-size: 50%;
+}
+.cards-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1contain;
+    height: 90%;
+}
+
+@media only screen or (max-device-width: 480px) {
+    h1 {
+        font-size: 200%;
+    }
+    h2 {
+        font-size: 140%;
+    }
+    h3 {
+        font-size: 100%;
+    }
+    div.tsc_pricingtable03 div.caption_column {
+        font-size: 70%;
+    }
+}
