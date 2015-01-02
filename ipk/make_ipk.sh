@@ -34,7 +34,7 @@ rm "packagetemp.tar"
 # create control.tar
 #
 echo " Creating control.tar ..."
-tar -cf "control.tar" "./control" "./conffiles"
+tar -cf "control.tar" "./control" "./conffiles" "./postinst"
 if [ $? != 0 ] || [ ! -f "control.tar" ]; then 
 	echo " ERROR: creation of $2/control.tar failed!"
 	exit 2	
