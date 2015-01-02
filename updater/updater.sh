@@ -5,7 +5,7 @@ cd /tmp || exit
 URL="http://raw.githubusercontent.com/phoeagon/gfw-sim/release/releases/digest"
 wget --no-check-certificate ${URL} -O /tmp/gfw.digest
 # Test if need to update
-diff /etc/gfw.digest /tmp/gfw.digest || exit
+diff /etc/gfw.digest /tmp/gfw.digest && exit
 PACKAGE=`sed '2q;d' /tmp/gfw.digest`
 # Download.
 wget --no-check-certificate ${PACKAGE} -O ${DEST_PACKAGE}
