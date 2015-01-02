@@ -32,7 +32,7 @@ h6 {
     height: 90%;
 }
 
-@media only screen or (max-device-width: 480px) {
+@media only screen and (max-device-width: 480px) {
     h1 {
         font-size: 200%;
     }
