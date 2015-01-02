@@ -49,5 +49,5 @@ ipk:
 	tmp/ipk/make_ipk.sh $(dir)/releases/gfw.ipk ./tmp/ipk
 
 all: collect
-	make ipk
+	make -B ipk
 
