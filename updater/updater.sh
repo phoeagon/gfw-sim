@@ -11,7 +11,7 @@ PACKAGE=`sed '2q;d' /tmp/gfw.digest`
 wget --no-check-certificate ${PACKAGE} -O ${DEST_PACKAGE}
 # Check checksum
 EXPECTED_DIGEST=`head -1 /tmp/gfw.digest`
-echo ${EXPECTED_DIGEST} ${PACKAGE} | md5sum -c || exit
-tar xf ${PACKAGE} -C /
+echo ${EXPECTED_DIGEST}"  "${DEST_PACKAGE} | md5sum -c || exit
+tar xf ${DEST_PACKAGE} -C /
 # Print Success
 echo "OK"
