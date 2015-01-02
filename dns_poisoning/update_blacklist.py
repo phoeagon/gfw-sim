@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# Originally in clowwindy/gfwlist2pac, under MIT License
+# Adapted by phoeagon
 
 import pkgutil
 import urlparse
