@@ -32,6 +32,12 @@ h6 {
     height: 90%;
 }
 
+.vert-centered {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 @media only screen and (max-device-width: 480px) {
     h1 {
         font-size: 200%;
