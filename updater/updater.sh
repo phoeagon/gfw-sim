@@ -2,7 +2,7 @@
 DEST_PACKAGE="/tmp/gfw.update.tgz"
 cd /tmp || exit
 # Get update digest
-URL="http://raw.githubusercontent.com/phoeagon/gfw-sim/release/releases/digest"
+URL="https://raw.githubusercontent.com/phoeagon/gfw-sim/release/releases/digest"
 wget --no-check-certificate ${URL} -O /tmp/gfw.digest
 # Test if need to update
 diff /etc/gfw.digest /tmp/gfw.digest && exit
