@@ -13,5 +13,6 @@ wget --no-check-certificate ${PACKAGE} -O ${DEST_PACKAGE}
 EXPECTED_DIGEST=`head -1 /tmp/gfw.digest`
 echo ${EXPECTED_DIGEST}"  "${DEST_PACKAGE} | md5sum -c || exit
 tar xf ${DEST_PACKAGE} -C /
+cp /tmp/gfw.digest /etc/gfw.digest
 # Print Success
 echo "OK"
