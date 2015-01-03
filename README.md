@@ -6,6 +6,8 @@ A [GFW](http://en.wikipedia.org/wiki/Golden_Shield_Project)
 simulator to work on routers, based on [OpenWRT](http://openwrt.org).
 This is a mock implementation of GFW on OpenWRT routers.
 
+A non-technical description [here](http://fqrouter.info).
+
 ## Goal
 
 The router simulates the end-user experience as if within GFW. It aims at
