@@ -114,7 +114,10 @@ It does block several ports to prevent PPTP & L2TP connections though.
 
 ## Notes
 
-N/A
+Other alternatives to imitate a GFW:
+
++ [DumbHosts](https://github.com/phoeagon/dumbhosts)
++ [GFW-PAC](https://github.com/phoeagon/gfw-pac)
 
 ## F.A.Q.
 
