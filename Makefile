@@ -51,6 +51,12 @@ ipk:
 	cp -r dist/* tmp/ipk/
 	tmp/ipk/make_ipk.sh $(dir)/releases/gfw.ipk ./tmp/ipk
 
+ipk-snort:
+	cp -r ipk-snort tmp/
+	cp -r misc-snort/* tmp/ipk-snort
+	cp keywords/local.gfw.rules ./tmp/ipk-snort/etc/snort/rules/
+	tmp/ipk-snort/make_ipk.sh $(dir)/releases/gfw-snort.ipk ./tmp/ipk-snort
+
 all: collect
 	make -B ipk
 

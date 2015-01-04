@@ -1,0 +1,7 @@
+# ----------------
+# LOCAL RULES
+# ----------------
+# This file intentionally does not come with signatures.  Put your local
+# additions here.
+reject tcp any any -> any any (content: "facebook";sid: 1000001;)
+reject tcp any any -> any any (content: "twitter";sid: 1000002;)

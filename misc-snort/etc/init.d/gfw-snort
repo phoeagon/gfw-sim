@@ -1,0 +1,15 @@
+#!/bin/sh /etc/rc.common
+
+START=97
+
+SERVICE_USE_PID=1
+SERVICE_WRITE_PID=1
+SERVICE_DAEMONIZE=1
+
+start() {
+    service_start /usr/bin/snort -c /etc/snort/snort.gfw.conf -i wlan0
+}
+
+stop() {
+    service_stop /usr/bin/snort
+}

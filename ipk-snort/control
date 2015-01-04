@@ -1,0 +1,9 @@
+Package: gfw-snort
+Priority: optional
+Section: net
+Depends: snort
+Description: A snort based keywords censoring system
+Maintainer: phoeagon <admin@gfwrouter.info>
+Source: N/A
+Version: 0.1.0
+Architecture: all
