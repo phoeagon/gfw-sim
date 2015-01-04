@@ -8,6 +8,27 @@ This is a mock implementation of GFW on OpenWRT routers.
 
 A non-technical description [here](http://fqrouter.info).
 
+## Getting Started
+
+Assume you have a router that is already with OpenWRT installed. (14.07
+Barrier Breaker recommended).
+
+Grab the `ipk` files from `./releases` under *release* branch.
+
+	scp gfw*.ipk root@[router_ip]:/tmp
+	ssh root@[router_ip]
+	> # On your router
+	> opkg update
+	> opkg install /tmp/gfw.ipk
+	# This installs the main component
+	# If you would like to install the keyword censoring system with
+	# Snorb, go on with:
+	> opkg install /tmp/gfw-snorb.ipk
+	# No matter whether you install `gfw-snorb.ipk`, do a
+	> reboot
+	# to finish up.
+
+
 ## Goal
 
 The router simulates the end-user experience as if within GFW. It aims at
