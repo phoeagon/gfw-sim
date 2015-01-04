@@ -16,7 +16,7 @@ ip_block: environment
 keywords: environment
 	cd keywords ; export PYTHONIOENCODING="UTF-8"; python generate_rules.py >$(dir)/tmp/keywords.sh
 
-collect: dns_poison ip_block preventbypass keywords
+collect: dns_poison ip_block preventbypass keywords updater
 	cp -r $(dir)/misc/* $(dir)/dist
 
 	-mkdir -p $(dir)/dist/etc/dnsmasq.d/
@@ -43,7 +43,10 @@ update: collect
 	cat releases/digest | tail --lines=+2 >> ./tmp/md5sum
 	mv ./tmp/md5sum releases/digest
 
-ipk:
+updater: environment
+	cp updater/updater.sh $(dir)/dist/usr/bin/gfw.updater.sh
+
+ipk: 
 	cp -r ipk tmp/
 	cp -r dist/* tmp/ipk/
 	tmp/ipk/make_ipk.sh $(dir)/releases/gfw.ipk ./tmp/ipk
