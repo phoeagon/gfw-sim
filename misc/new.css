@@ -16,8 +16,13 @@
     left: 50%;
     top: -50%;
 }
+@media (min-width: 1600px) {
+    h1 {
+        font-size: 400% !important;
+    }
+}
 h1 {
-    font-size: 400%;
+    font-size: 300%;
 }
 h4 {
     font-size: 80%;
@@ -50,5 +55,12 @@ h6 {
     }
     div.tsc_pricingtable03 div.caption_column {
         font-size: 70%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .vertical-center-lg {
+          position: relative;
+          top: 50%;
     }
 }
