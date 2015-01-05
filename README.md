@@ -17,6 +17,9 @@ Grab the `ipk` files from
 [`./releases`](https://github.com/phoeagon/gfw-sim/tree/release/releases)
 under *release* branch. (`gfw.ipk` and optionally `gfw-snort.ipk`.)
 
+	cd /tmp
+	wget "https://github.com/phoeagon/gfw-sim/raw/release/releases/gfw.ipk"
+	wget "https://github.com/phoeagon/gfw-sim/raw/release/releases/gfw-snort.ipk"
 	scp gfw*.ipk root@[router_ip]:/tmp
 	ssh root@[router_ip]
 	> # On your router
@@ -54,6 +57,35 @@ Currently only prebuilt images for D-Link DIR-505 is available. The file
 may be found in our release tab. It's based on the trunk version of 
 OpenWRT (as of 2014/12/30).
 
+To install the prebuilt image, use any router with OpenWRT already installed.
+(The following procedure erases your configurations on the router, so always
+backup first!)
+
+		(pc)> scp prebuilt.bin root@[router_ip]:/tmp/
+		(pc)> ssh root@[router_ip]
+			$ sysupgrade -n -v /tmp/prebuilt.bin
+			# -n for not preserving your current configurations. You may
+			# go without it if you know what you are doing.
+
+The prebuilt images has password `gfw-protected` for its Wifi and SSH login.
+And works as a wireless router, sharing Internet access from `eth1`, from which
+it gets a dynamic IP from DHCP, to provide WiFi Internet access to `wlan0`, under
+the AP name `GFWed`.
+
+### Installing with OpenWRT's `opkg`
+
+Grab the `gfw*.ipk` files from `releases` folder.
+
+	cd /tmp
+	wget "https://github.com/phoeagon/gfw-sim/raw/release/releases/gfw.ipk"
+	wget "https://github.com/phoeagon/gfw-sim/raw/release/releases/gfw-snort.ipk"
+	scp gfw*.ipk root@[router_ip]:/tmp
+	ssh root@[router_ip]
+	> # On your router
+	> opkg update
+	> opkg install /tmp/gfw*.ipk
+	> reboot		
+
 ### Installing with source files
 
 It's only tested on an Ubuntu trusty.
@@ -82,7 +114,14 @@ connection for this.
 
 ### Installing with prebuilt rule files
 
-N/A
+		(pc) > ssh root@[router_ip]
+			 $ opkg update
+			 $ opkg install wget tar iptables-mod-filter dnsmasq
+			 $ wget -O /tmp/gfw.tgz "https://github.com/phoeagon/gfw-sim/raw/release/releases/update.tgz"
+			 $ cd /
+			 $ tar xf /tmp/gfw.tgz
+			 $ /etc/init.d/gfw enable
+			 $ /etc/init.d/gfw start
 
 ## Design and Implementation
 
