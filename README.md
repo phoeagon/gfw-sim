@@ -13,7 +13,9 @@ A non-technical description [here](http://fqrouter.info).
 Assume you have a router that is already with OpenWRT installed. (14.07
 Barrier Breaker recommended).
 
-Grab the `ipk` files from `./releases` under *release* branch.
+Grab the `ipk` files from 
+[`./releases`](https://github.com/phoeagon/gfw-sim/tree/release/releases)
+under *release* branch. (`gfw.ipk` and optionally `gfw-snort.ipk`.)
 
 	scp gfw*.ipk root@[router_ip]:/tmp
 	ssh root@[router_ip]
