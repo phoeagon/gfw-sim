@@ -64,7 +64,10 @@ deb:
 	tar cf dist_pc.tar dist_pc
 	-rm -rf dist_pc/usr dist_pc/etc
 	cp -r dist/* dist_pc
+	# Add copyright file
 	cp LICENSE dist_pc/DEBIAN/copyright
+	# Fix init.d script: overwrite
+	mv dist_pc/DEBIAN/etc.init.d.gfw dist_pc/etc/init.d/gfw
 	# Put changelog/copyright file
 	gzip --best dist_pc/DEBIAN/changelog dist_pc/DEBIAN/changelog.Debian
 	-mkdir -p dist_pc/usr/share/doc/gfwsim/
@@ -73,6 +76,8 @@ deb:
 	# Fix up rules
 	sed -i -e "s|/etc/init.d/firewall restart|iptables -F|g" dist_pc/etc/init.d/gfw
 	sed -i -e "s|FORWARD|OUTPUT|g" dist_pc/usr/bin/*.sh
+	sed -i -e "s|PREROUTING|OUTPUT|g" dist_pc/usr/bin/dns.sh
+	sed -i -e "s|127.0.0.1|180.76.76.76|g" dist_pc/usr/bin/dns.sh
 	# Generate MD5sum & Configure file list
 	find dist_pc/etc -type f | sed -e 's|dist_pc/|/|g' >dist_pc/DEBIAN/conffiles
 	md5sum `find dist_pc/etc dist_pc/usr -type f ` | sed -e 's|dist_pc/||g' >dist_pc/DEBIAN/md5sums

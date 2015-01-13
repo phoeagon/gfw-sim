@@ -1,0 +1,34 @@
+#!/bin/sh
+
+START=96
+
+SERVICE_USE_PID=1
+SERVICE_WRITE_PID=1
+SERVICE_DAEMONIZE=1
+
+start() {
+    ( sh /usr/bin/dns.sh ) 2>&1 >>/tmp/gfw.log
+    ( /usr/bin/ipblock.sh ) 2>&1 >>/tmp/gfw.log
+    ( /usr/bin/keywords.sh ) 2>&1 >>/tmp/gfw.log
+    ( /usr/bin/preventbypass.sh ) 2>&1 >>/tmp/gfw.log
+    iptables -I INPUT -d 192.168.1.1 -j ACCEPT
+}
+
+stop() {
+    service dnsmasq stop
+    echo "nameserver 8.8.8.8" >/etc/resolve.conf
+    iptables -F
+    iptables -t nat -F
+}
+
+restart() {
+    stop;
+    start;
+}
+
+case "$1" in
+    start) start;;
+    stop) stop;;
+    restart|force-reload|reload) restart;;
+    *) echo "Usage $0 {start|stop|reload|restart|force-reload}";;
+esac

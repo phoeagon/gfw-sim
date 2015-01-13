@@ -1,4 +1,4 @@
 #!/bin/sh
-update-rc.d gfw defaults || echo ""
-update-rc.d gfw enable || echo ""
+update-rc.d gfw defaults 95 || echo ""
+update-rc.d gfw enable || echo "Success"
 
