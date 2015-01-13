@@ -94,11 +94,13 @@ deb:
 	mv ./dist_pc/etc/init.d ./dist_pc/etc/rc.d/init.d
 	sed -i -e 's|etc/init.d/|etc/rc.d/init.d/|g' dist_pc/DEBIAN/*
 	dpkg-deb --build dist_pc
-	chmod 777 dist_pc.deb
+	chmod 666 dist_pc.deb
 	alien -r --scripts dist_pc.deb
 	rm dist_pc.deb
-	chmod 777 gfwsim*.rpm
 	mv gfwsim*.rpm ./releases/
+	rpmbuild -bb rpm_spec
+	mv /tmp/noarch/gfwsim-meta-1.0.0-0.noarch.rpm releases/
+	chmod 666 releases/gfwsim*.rpm
 	# Clean up
 	-rm -rf dist_pc
 	# Decompress from backup tarball

@@ -1,0 +1,22 @@
+Summary:        Meta-Package of GFW Simulator package.
+Name:	        gfwsim-meta
+Version:	1.0.0
+Release:	0
+License:	Aoache License
+Packager:	phoeagon <admin gfwrouter info>
+Vendor:		KISS Lab
+Group:		Networking/Daemons
+URL:		http://www.gfwrouter.info/
+Requires:	gfwsim iptables dnsmasq
+BuildArch:	noarch
+
+%description
+This is a meta package for gfw-sim, so as to include dependencies.
+
+%files
+
+%changelog
+* Tue Jan 13 2015 phoeagon <admin gfwrouter info> 0
+- initial
+
+%define _rpmdir /tmp/
