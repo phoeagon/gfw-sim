@@ -1,3 +1,5 @@
 dist
 tmp
-
+dist_pc.tar
+dist_pc/etc/
+dist_pc/usr/

@@ -1,0 +1,4 @@
+/etc/gfw.digest
+/etc/dnsmasq.d/domains.conf
+/etc/dnsmasq.conf.gfw.example
+/etc/init.d/gfw

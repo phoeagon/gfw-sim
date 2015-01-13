@@ -1,0 +1,9 @@
+d41d8cd98f00b204e9800998ecf8427e  etc/gfw.digest
+bc9809ba1f7b6881ba908146aabcf122  etc/dnsmasq.d/domains.conf
+64fe15d94319fc60ff60ed387602a597  etc/dnsmasq.conf.gfw.example
+5ebff2c56a4cd43acee1da9e9f015248  etc/init.d/gfw
+d78a59e34aabf2bc819daf06ef24e22a  usr/bin/gfw.updater.sh
+02bea2fd0d45ace9b49ecc618284ac6b  usr/bin/preventbypass.sh
+5079898f784a564efa3b5b513f994f40  usr/bin/ipblock.sh
+c02cef11f938129cb832ba5ea1f461df  usr/bin/keywords.sh
+62fb0ffdf88a1a49448970bc87dde252  usr/bin/dns.sh

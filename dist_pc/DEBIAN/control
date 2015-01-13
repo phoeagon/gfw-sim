@@ -1,0 +1,8 @@
+Package: gfwsim
+Version: 0.1.0
+Section: admin
+Priority: optional
+Architecture: all
+Depends: iptables (>=1.3.0), dnsmasq (>=2.30.1)
+Maintainer: phoeagon <admin@fqrouter.info>
+Description: A mock implementation of GFW, on Ubuntu.

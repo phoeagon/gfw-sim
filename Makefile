@@ -57,6 +57,37 @@ ipk-snort:
 	cp keywords/local.gfw.rules ./tmp/ipk-snort/etc/snort/rules/
 	tmp/ipk-snort/make_ipk.sh $(dir)/releases/gfw-snort.ipk ./tmp/ipk-snort
 
+deb:
+	-mkdir dist_pc
+	chmod 755 dist_pc
+	# Make a copy
+	tar cf dist_pc.tar dist_pc
+	-rm -rf dist_pc/usr dist_pc/etc
+	cp -r dist/* dist_pc
+	cp LICENSE dist_pc/DEBIAN/copyright
+	# Put changelog/copyright file
+	gzip --best dist_pc/DEBIAN/changelog dist_pc/DEBIAN/changelog.Debian
+	-mkdir -p dist_pc/usr/share/doc/gfwsim/
+	mv dist_pc/DEBIAN/copyright dist_pc/usr/share/doc/gfwsim/
+	mv dist_pc/DEBIAN/*.gz dist_pc/usr/share/doc/gfwsim/
+	# Fix up rules
+	sed -i -e "s|/etc/init.d/firewall restart|iptables -F|g" dist_pc/etc/init.d/gfw
+	sed -i -e "s|FORWARD|OUTPUT|g" dist_pc/usr/bin/*.sh
+	# Generate MD5sum & Configure file list
+	find dist_pc/etc -type f | sed -e 's|dist_pc/|/|g' >dist_pc/DEBIAN/conffiles
+	md5sum `find dist_pc/etc dist_pc/usr -type f ` | sed -e 's|dist_pc/||g' >dist_pc/DEBIAN/md5sums
+	# Fix permission
+	chown -R root:root dist_pc/*
+	# Actual build
+	dpkg-deb --build dist_pc
+	chmod 777 dist_pc.deb
+	mv dist_pc.deb ./releases/
+	-rm -rf dist_pc
+	# Decompress from backup tarball
+	tar xf dist_pc.tar
+	
+	
+
 all: collect
 	make -B ipk
 
