@@ -83,10 +83,23 @@ deb:
 	md5sum `find dist_pc/etc dist_pc/usr -type f ` | sed -e 's|dist_pc/||g' >dist_pc/DEBIAN/md5sums
 	# Fix permission
 	chown -R root:root dist_pc/*
-	# Actual build
+	# Actual build DEB
 	dpkg-deb --build dist_pc
 	chmod 777 dist_pc.deb
 	mv dist_pc.deb ./releases/
+	# Fix permissions for building RPM
+	chmod 555 ./dist_pc/usr/bin ./dist_pc/
+	chmod 755 ./dist_pc/etc/init.d
+	-mkdir -p ./dist_pc/etc/rc.d/
+	mv ./dist_pc/etc/init.d ./dist_pc/etc/rc.d/init.d
+	sed -i -e 's|etc/init.d/|etc/rc.d/init.d/|g' dist_pc/DEBIAN/*
+	dpkg-deb --build dist_pc
+	chmod 777 dist_pc.deb
+	alien -r --scripts dist_pc.deb
+	rm dist_pc.deb
+	chmod 777 gfwsim*.rpm
+	mv gfwsim*.rpm ./releases/
+	# Clean up
 	-rm -rf dist_pc
 	# Decompress from backup tarball
 	tar xf dist_pc.tar

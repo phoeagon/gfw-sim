@@ -1,5 +1,9 @@
 #!/bin/sh
-
+#
+# gfw   Start/stop the GFW daemon.
+#
+# chkconfig: 2345 95 60
+#
 START=96
 
 SERVICE_USE_PID=1

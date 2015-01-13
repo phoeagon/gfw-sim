@@ -1,4 +1,10 @@
 #!/bin/sh
-invoke-rc.d gfw stop
-update-rc.d gfw disable
-update-rc.d -f gfw remove
+which update-rc.d >/dev/null 2>&1
+if [ $? -eq 0 ]; then 
+    invoke-rc.d gfw stop
+    update-rc.d gfw disable
+    update-rc.d -f gfw remove
+else
+    chkconfig gfw off   
+    chkconfig --del gfw 
+fi

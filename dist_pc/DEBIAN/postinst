@@ -1,4 +1,10 @@
 #!/bin/sh
-update-rc.d gfw defaults 95 || echo ""
-update-rc.d gfw enable || echo "Success"
+which update-rc.d >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    update-rc.d gfw defaults 95 || echo ""
+    update-rc.d gfw enable || echo "Success"
+else
+    chkconfig --add gfw
+    chkconfig gfw on
+fi
 
