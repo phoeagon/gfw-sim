@@ -1,2 +1,2 @@
 #!/bin/sh
-/etc/init.d/gfw disable
+invoke-rc.d gfw disable
