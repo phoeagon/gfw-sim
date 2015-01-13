@@ -1,3 +1,4 @@
 #!/bin/sh
-invoke-rc.d gfw enable || echo "Success"
+update-rc.d gfw defaults || echo ""
+update-rc.d gfw enable || echo ""
 

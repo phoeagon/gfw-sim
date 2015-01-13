@@ -1,2 +1,2 @@
 #!/bin/sh
-invoke-rc.d gfw disable
+update-rc.d gfw disable
