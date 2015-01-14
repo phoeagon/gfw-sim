@@ -2,6 +2,8 @@ import socket
 import requests
 import random
 import re
+import ipaddr
+from ipwhois import IPWhois
 from joblib import Parallel, delayed
 
 def is_ip(addr):
@@ -64,11 +66,34 @@ def generate_iptables_from_subnets(subnets, actions=None):
                 'iptables -I FORWARD -j IPBLOCK'])
     return '\n'.join(cont)
 
+whois_pool = []
+def run_whois(addr):
+    is_in = lambda addr, pool: reduce(lambda x,y: x or y,
+                    [net.Contains(addr) for net in pool],
+                    False)
+    sample = addr[:addr.rfind('.')] + '.1/32'
+    ip = ipaddr.IPv4Network(sample)
+    if not is_in(ip, whois_pool):
+        try:
+            data = IPWhois(addr[:addr.rfind('.')] + '.1').lookup(get_referral=True)
+            cidr = data['nets'][0]['cidr']
+            whois_pool.append(ipaddr.IPv4Network(cidr))
+            return cidr
+        except:
+            return addr
+    return None
+
+def resolve_whois_subnet(subnet):
+    _parallel = Parallel(n_jobs=20, backend="threading")
+    result = _parallel(delayed(run_whois)(addr) for addr in subnet)
+    return [x for x in result if x]
+    
+
 def generate_iptables():
-    subnets = (generate_google_ips_from_online() +
-               generate_from_smarthost() +
-               generate_from_domain() +
-               generate_from_subnets())
+    resolved_subnets = resolve_whois_subnet(generate_google_ips_from_online() +
+               generate_from_subnets());
+    subnets = ( resolved_subnets + generate_from_smarthost() +
+               generate_from_domain() )
     return generate_iptables_from_subnets(subnets)
     
 
