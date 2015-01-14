@@ -90,8 +90,9 @@ def resolve_whois_subnet(subnet):
     
 
 def generate_iptables():
-    resolved_subnets = resolve_whois_subnet(generate_google_ips_from_online() +
-               generate_from_subnets());
+    resolved_subnets = resolve_whois_subnet(
+                generate_google_ips_from_online() +
+                generate_from_subnets() + generate_from_domain('resource/heavy_domains.txt'));
     subnets = ( resolved_subnets + generate_from_smarthost() +
                generate_from_domain() )
     return generate_iptables_from_subnets(subnets)
