@@ -14,6 +14,7 @@
 <!-- DC Pricing Tables CSS -->
 <link type="text/css" rel="stylesheet" href="misc/tsc_pricingtables.css" />
 <link rel="stylesheet" href="misc/jquery.sliderTabs.min.css">
+<link href='//fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 <style>
 #subscribe_letter::after {
   content: "";
@@ -66,7 +67,122 @@
   </div>
 </div>
 
-
+<div class="row shadow-z-2" style="margin: 10px 0;">
+  <div class="center col-md-offset-1 col-md-10 col-xs-12 col-lg-8 col-lg-offset-2"
+  style="margin-top: 10px; margin-bottom: 10px;">
+  <span style="font-size: 150%;">
+    <h1 style="font-family: 'Lobster', cursive;">LONG LIVE GFW-ROUTER!</h1>
+  </span>
+  <h2><a href="https://twitter.com/fqrouter/status/553060700629659649" target="_blank">R.I.P.</a>
+  <a href="http://fqrouter.com" target="_blank">fqrouter</a></h2>
+  <h3>We are expanding to more platforms to provide
+  <a href="http://en.wikipedia.org/wiki/Golden_Shield_Project" target="_blank">GFW</a>-ish protection!</h3>
+  </div>
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <div style="width: 100%; height: 100px; background-image: url(img/openwrt.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center; "></div>
+      <a class="btn btn-md btn-primary btn-block" target="_blank"
+      href="#alpha">
+      Download Alpha</a>
+      <a href="./tutorials/onopenwrt.htm" target="_blank"
+      class="btn btn-md btn-info btn-block" target="_blank">
+      Instr. for any OpenWRT router</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <div style="width: 100%; height: 100px; background-image: url(img/android.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center; "></div>
+      <a class="btn btn-md btn-primary btn-block" target="_blank"
+      href="https://github.com/phoeagon/gfw-vpn-droid/raw/releases/gfw-vpn.apk">
+	Download APK</a>
+      <a class="btn btn-md btn-info btn-block" target="_blank"
+      href="https://github.com/phoeagon/gfw-vpn-droid/raw/releases/demos/1.png">
+	Screenshot</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <div style="width: 100%; height: 100px; background-image: url(img/ubuntu.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center; "></div>
+      <a class="btn btn-md btn-primary btn-block"
+      href="https://github.com/phoeagon/gfw-sim/raw/release/releases/dist_pc.deb">
+	Download DEB</a>
+      <a class="btn btn-md btn-info btn-block" target="_blank"
+      href="mailto: troubleshoot@gfwrouter.info">
+	Troubleshoot</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <div style="width: 100%; height: 100px; background-image: url(img/redhat.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center; "></div>
+      <button class="btn btn-md btn-primary btn-block" type="button"
+      data-toggle="modal" data-target="#redhat-dialog">
+      Installation Guide</button>
+      <a class="btn btn-md btn-info btn-block" target="_blank"
+      href="mailto: troubleshoot@gfwrouter.info">
+	Troubleshoot</a>
+    </div>
+  </div>
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 10px 0;">
+    <div class="col-md-6 col-xs-12">
+      <h2>Even if you have non of the above, you are <b>not</b> out of luck.</h2>
+      <h2>We have your needs in mind!</h2>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 center">
+      <h1>DumbHosts</h1>
+      <a class="btn btn-md btn-info btn-block" target="_blank"
+      href="https://github.com/phoeagon/dumbhosts/">
+	Intro</a>
+      <a class="btn btn-md btn-primary btn-block" target="_blank"
+      href="https://github.com/phoeagon/dumbhosts/raw/master/hosts">
+	Download</a>
+      <a class="btn btn-md btn-info btn-block" target="_blank"
+      href="https://www.google.com/search?q=how+to+change+hosts+file">
+	How-To-Use</a>	
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 center">
+      <h1>GFW-PAC</h1>
+      <a class="btn btn-md btn-info btn-block" target="_blank"
+      href="https://github.com/phoeagon/gfw-pac">
+	Intro</a>
+      <a class="btn btn-md btn-primary btn-block" target="_blank"
+      href="https://github.com/phoeagon/gfw-pac/raw/master/gfw.pac">
+	Download</a>
+      <a class="btn btn-md btn-info btn-block" target="_blank"
+      href="https://www.youtube.com/watch?v=nKB4FoPw15k">
+	How-To-Use (Firefox)</a>
+    </div>
+  </div>
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 10px 0;">
+    <div class="col-xs-12 col-md-6" style="background: #ffeeee;">
+	<div class="center" style="width: 100%;"><h2>Technical Notes</h2></div>
+	<p>We have observed that GFW is providing
+	<a href="https://gist.github.com/felixonmars/7ce1dcd193c65937e670" target="_blank">a much greater diversity of IPs</a> resolved to
+	via DNS than before. We are busy working on a solution, that would probably
+	be based on our latest <font style="font-family: monospace">/dev/random</font>-as-a-service.
+	</p>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a class="btn btn-md btn-success btn-block" target="_blank"
+      href="http://dev-random-as-a-service.appspot.com/">
+	/dev/random-as-a-service</a>
+    <div class="cb-tip-button" data-content-location="" data-href="//www.coinbase.com/tip_buttons/show_tip" data-to-user-id="537470371b333d31e100001c"></div>
+<script>!function(d,s,id) {var js,cjs=d.getElementsByTagName(s)[0],e=d.getElementById(id);if(e){return;}js=d.createElement(s);js.id=id;js.src="https://www.coinbase.com/assets/tips.js";cjs.parentNode.insertBefore(js,cjs);}(document, 'script', 'coinbase-tips');</script>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <pre>Bitcoin:
+1Hq6txKS6hSb357E1KJRtUVhvWxnfBU4WA</pre>
+      <a class="btn btn-md btn-success btn-block" target="_blank"
+      href="https://www.coinbase.com/phoeagon">
+	DONATION</a>
+    </div>
+  </div>
+</div>
 <div class="row shadow-z-2" style="margin: 10px 0;">
   <a name="screen0" ></a>
   <div class="col-md-offset-2 col-md-8 col-xs-12 col-lg-6 col-lg-offset-0"
@@ -340,6 +456,7 @@
   <div class="col-md-4 col-md-offset-1 col-xs-6">
       <p class="text-muted">
 Copyright 2015. phoeagon. All rights reserved, if possible.</p>
+<p  class="text-muted" style="font-size:50%">Redhat, OpenWRT, Android, CentOS, GFW, Google, GitHub, Ubuntu may or may not be registered trademarks of Redhat, OpenWRT, Google, CentOS Community, Dr. BX Fang, Google, Github, Canonical, respectively.</p>
 </div>
   </div>
 </div>
@@ -356,6 +473,31 @@ Copyright 2015. phoeagon. All rights reserved, if possible.</p>
   <div class="modal-body">
     <p>
     Thank you for subscribing.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal">
+      Okay</button>
+  </div>
+</div>
+  </div>
+</div>
+<div id="redhat-dialog" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">
+      Redhat Installation guide</h4>
+  </div>
+  <div class="modal-body">
+    <pre>
+	cd ~ ; mkdir gfwsim ; cd gfwsim
+	yum install dnsmasq
+	yum install iptables
+	yum install wget
+	wget https://github.com/phoeagon/gfw-sim/raw/release/releases/gfwsim-0.1.0-2.noarch.rpm
+	rpm -Uvh gfwsim-0.1.0-2.noarch.rpm
+    </pre>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" data-dismiss="modal">
