@@ -1,10 +1,11 @@
 #!/bin/sh
-DEAD="59.24.3.173"
+DEAD_IPS=`wget -O - 'https://gist.github.com/felixonmars/7ce1dcd193c65937e670/raw/f75bce4a0f9420f08cedad26477f98b5fbc0ec2e/dns_pollution_iplist.txt'`
 BLACKLIST=`cat blacklist.txt`
 
 echo "# Blacklisted."
 for domain in $BLACKLIST
   do
+    DEAD=`echo $DEAD_IPS | tr ' ' '\n' | sort -R | head -1`
     echo "address=/"${domain}"/"${DEAD}
   done
 
