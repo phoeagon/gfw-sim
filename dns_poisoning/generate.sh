@@ -9,5 +9,14 @@ for domain in $BLACKLIST
     echo "address=/"${domain}"/"${DEAD}
   done
 
+
+# New Source
+BLACKLIST=`wget -O - https://raw.githubusercontent.com/Leask/BRICKS/master/gfw.bricks`
+for domain in $BLACKLIST
+  do
+    DEAD=`echo $DEAD_IPS | tr ' ' '\n' | sort -R | head -1`
+    echo "address=/"${domain}"/"${DEAD}
+  done
+
 echo "# Otherwise, go to baidu public DNS."
 echo "server=/#/180.76.76.76#53"
