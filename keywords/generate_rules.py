@@ -1,4 +1,5 @@
 import requests
+import encode_utils
 
 def _get_keywords_from_google(url='https://gist.githubusercontent.com/zythum/2848881/raw/4bae5bd21da3ed44b8a2cc9d2c1d6cd4c70dc74c/gistfile1.txt'):
     r = requests.get(url)
@@ -28,7 +29,7 @@ def generate_iptables(keywords, action='-p tcp -j REJECT --reject-with tcp-reset
     return '\n'.join(cont)
 
 def main():
-    print generate_iptables(get_keywords())
+    print generate_iptables(encode_utils.enum(get_keywords()))
 
 if __name__ == '__main__':
     main()
