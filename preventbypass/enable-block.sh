@@ -10,5 +10,14 @@ iptables -A PREVENTBYPASS -p udp --dport 500 -j DROP
 iptables -A PREVENTBYPASS -p udp --dport 4500 -j DROP
 iptables -A PREVENTBYPASS -p udp --dport 1701 -j DROP
 iptables -A PREVENTBYPASS --dport 50 -j DROP
+iptables -A PREVENTBYPASS -p l2tp -j DROP
+
+# GRE/ESP/IP-Encapsulate/Any-private-interior-gateway/IPIP
+iptables -A PREVENTBYPASS -p gre -j DROP
+iptables -A PREVENTBYPASS -p esp -j DROP
+iptables -A PREVENTBYPASS -p ipencap -j DROP
+iptables -A PREVENTBYPASS -p igp -j DROP
+iptables -A PREVENTBYPASS -p ipip -j DROP
+
 
 iptables -I FORWARD -j PREVENTBYPASS
