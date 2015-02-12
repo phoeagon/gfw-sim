@@ -1,3 +1,4 @@
+*.pyc
 dist_pc/DEBIAN/md5sums 
 dist_pc/DEBIAN/copyright
 dist
