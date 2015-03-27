@@ -12,5 +12,9 @@ for domain in $BLACKLIST
 
 
 
+echo "# Hijack some Ad sites"
+echo "address=/cbjs.baidu.com/127.0.0.1"
+echo "address=/valp.atm.youku.com/127.0.0.1"
+echo "address=/stat.tudou.com/127.0.0.1"
 echo "# Otherwise, go to baidu public DNS."
 echo "server=/#/180.76.76.76#53"

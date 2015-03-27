@@ -12,8 +12,10 @@ start() {
     ( /usr/bin/keywords.sh ) 2>&1 >>/tmp/gfw.log
     ( /usr/bin/preventbypass.sh ) 2>&1 >>/tmp/gfw.log
     iptables -I INPUT -d 192.168.1.1 -j ACCEPT
+    ( sh /usr/bin/hijack.sh start & ) 2>&1 >>/tmp/gfw.log
 }
 
 stop() {
     /etc/init.d/firewall restart
+    ( sh /usr/bin/hijack.sh stop & ) 2>&1 >>/tmp/gfw.log
 }
