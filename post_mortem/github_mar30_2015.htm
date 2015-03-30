@@ -1,0 +1,27 @@
+<p>This describes a new feature of <em>gfw-router</em>: hijacking.</p>
+
+<h2>What happened</h2>
+
+<p>At some point on Mar 27, 2015, it was discovered that an URL to
+a Baidu Ad (similar to Google Adsense) script was hijacked to return
+a script that repeatedly pulls some repo at <a href="https://github.com/">github</a>.</p>
+
+<p>The hijack was only found targetting some traffic from mostly northern America.</p>
+
+<p>Github mitigated by returning 'alert("malicious script found on this domain")', which blocks the execution of the JavaScript in question before user clicks on 
+the prompt.</p>
+
+<p>Thanks to <a href="http://twitter.com/yegle">@yegle</a> and <a href="https://twitter.com/yegle/status/581315307811180544">his discovery</a>.</p>
+
+<h2>What to simulate</h2>
+
+<p>Hijacking an URL to return a certain script (similar to XSS).</p>
+
+<h2>How to simulate</h2>
+
+<p>HTTP requests to some domains are redirected to the router itself on port 80,
+which serves a Javascript file using <code>netcat</code>.</p>
+
+<h2>How do I use it</h2>
+
+<p>Use the latest version of GFWRouter.</p>
