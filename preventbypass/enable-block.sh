@@ -22,5 +22,8 @@ iptables -A PREVENTBYPASS -p ipip -j DROP
 iptables -A PREVENTBYPASS -p encap -j DROP
 iptables -A PREVENTBYPASS -p etherip -j DROP
 
+# Drop DTLS
+ iptables -A PREVENTBYPASS -p udp -m string --algo bm --to 30 --hex-string "|17 fe ff|" -j DROP
+
 
 iptables -I FORWARD -j PREVENTBYPASS
